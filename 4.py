@@ -56,3 +56,17 @@ for i in tablesideflip:
     sum += i.count("SAMX")
 
 print(sum)
+
+#part two
+
+sum = 0
+temp = ""
+for i in range(1, len(table)-1):
+    for j in range(1, len(table[0])-1):
+        if table[i][j] == "A":
+            temp = table[i-1][j-1] + table[i+1][j+1]
+            if temp == "MS" or temp == "SM":
+                temp = table[i-1][j+1] + table[i+1][j-1]
+                if temp == "MS" or temp == "SM":
+                    sum += 1
+print(sum)
