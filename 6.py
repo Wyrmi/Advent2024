@@ -1,7 +1,7 @@
 import fileinput
 filepath = 'data/6.txt'
-steps = []
 table = []
+sum = 0
 for line in fileinput.input(filepath, inplace = False):
     table.append(list(line.rstrip()))
 
@@ -22,36 +22,28 @@ while(True):
                 dir = 1
             else:
                 position[0] -= 1
-                steps.append(str(position[0]) + str(position[1]))
-                table[position[0]][position[1]] = "0"
+                table[position[0]][position[1]] = "x"
         case 1:
             if table[position[0]][position[1] +1] == "#":
                 dir = 2
             else:
                 position[1] += 1
-                steps.append(str(position[0]) + str(position[1]))
-                table[position[0]][position[1]] = "0"
+                table[position[0]][position[1]] = "x"
         case 2:
             if table[position[0] +1][position[1]] == "#":
                 dir = 3
             else:
                 position[0] += 1
-                steps.append(str(position[0]) + str(position[1]))
-                table[position[0]][position[1]] = "0"
+                table[position[0]][position[1]] = "x"
         case 3:
             if table[position[0]][position[1] -1] == "#":
                 dir = 0
             else:
                 position[1] -= 1
-                steps.append(str(position[0]) + str(position[1]))
-                table[position[0]][position[1]] = "0"
+                table[position[0]][position[1]] = "x"
 
-steps = list(set(steps))
-print(len(steps))
-
-test = 0
 for t in table:
     for i in t:
-        if i == "0":
-            test += 1
-print(test)
+        if i == "x":
+            sum += 1
+print(sum)
