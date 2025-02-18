@@ -21,9 +21,30 @@ def addmultiply(i,lis):
             add.append(lis[i] + p)
             mul.append(lis[i] * p)
         return list(set(add + mul))
+    
+def parttwo(i,lis):
+    if i == 0:
+        return [lis[0]]
+    else:
+        add = []
+        mul = []
+        joi = []
+        prev = parttwo(i-1,lis)
+        for p in prev:
+            add.append(lis[i] + p)
+            mul.append(lis[i] * p)
+            joi.append(int(''.join(map(str, [p,lis[i]]))))
+        return list(set(add + mul + joi))
 
 for i in range(0, len(results)):
     if results[i] in addmultiply(len(values[i])-1,values[i]):
          sum += results[i]
+
+print(sum)
+
+sum =0
+for i in range(0, len(results)):
+    if results[i] in parttwo(len(values[i])-1,values[i]):
+        sum += results[i]
 
 print(sum)
