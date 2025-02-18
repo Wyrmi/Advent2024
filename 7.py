@@ -20,8 +20,7 @@ def addmultiply(i,lis):
         for p in prev:
             add.append(lis[i] + p)
             mul.append(lis[i] * p)
-        
-        return list(set(prev + add + mul))
+        return list(set(add + mul))
 
 for i in range(0, len(results)):
     if results[i] in addmultiply(len(values[i])-1,values[i]):
