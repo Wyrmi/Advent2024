@@ -8,6 +8,13 @@ for line in fileinput.input(filepath, inplace = False):
     table.append(list(line.rstrip()))
 #results = table[:]
 
+def calcantis(a,b):
+    dif = abs(a - b)
+    if a < b:
+        return (b + dif,a - dif)
+    else:
+        return (b - dif,a + dif)
+
 def findantis(lis):
     temp = []
     for i in lis:
@@ -20,14 +27,6 @@ def findantis(lis):
                 table[x[0]][y[0]] = "#"
             if -1 < x[1] < len(table) and -1 < y[1] < len(table[0]):
                 table[x[1]][y[1]] = "#"
-            
-def calcantis(a,b):
-    dif = abs(a - b)
-    if a < b:
-        return (b + dif,a - dif)
-    else:
-        return (b - dif,a + dif)
-
 
 for i in range(0, len(table)):
     for j in range(0, len(table[0])):
