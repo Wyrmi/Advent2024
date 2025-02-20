@@ -13,25 +13,21 @@ def findantis(lis):
     for i in lis:
         temp = lis[lis.index(i) + 1:]
         for j in temp:
-            xdif = abs(i[0] - j[0])
-            ydif = abs(i[1] - j[1])
-            if i[0] < j[0]:
-                x = j[0] + xdif
-                xz = i[0] - xdif
-            else:
-                x = i[0] - xdif
-                xz = j[0] + xdif
-            if i[1] < j[1]:
-                y = j[1] + ydif
-                yz = i[1] - ydif
-            else:
-                y = j[1] - ydif
-                yz = i[1] + ydif
-            if -1 < x < len(table) and -1 < y < len(table[0]):
-                table[x][y] = "#"
-            if -1 < xz < len(table) and -1 < yz < len(table[0]):
-                table[xz][yz] = "#"
+            x = calcantis(i[0],j[0])
+            y = calcantis(i[1],j[1])
             
+            if -1 < x[0] < len(table) and -1 < y[0] < len(table[0]):
+                table[x[0]][y[0]] = "#"
+            if -1 < x[1] < len(table) and -1 < y[1] < len(table[0]):
+                table[x[1]][y[1]] = "#"
+            
+def calcantis(a,b):
+    dif = abs(a - b)
+    if a < b:
+        return (b + dif,a - dif)
+    else:
+        return (b - dif,a + dif)
+
 
 for i in range(0, len(table)):
     for j in range(0, len(table[0])):
